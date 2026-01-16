@@ -4,6 +4,16 @@ import time
 # --- 設定とスタイル ---
 st.set_page_config(page_title="マクドナルド公式風デモ", layout="centered")
 
+# サイドバーにパスワード入力欄を作る
+password = st.sidebar.text_input("🔑 パスワードを入力してください", type="password")
+
+# パスワードが間違っている（または空欄）なら、ここでストップさせる
+if password != "2538":  # ←好きな数字に変えてOK
+    st.sidebar.warning("パスワードを入れてください")
+    st.title("🔒 ロックされています")
+    st.write("管理者から配布されたパスワードを入力してください。")
+    st.stop()  # ここでプログラムを強制停止する
+
 # CSS: デザイン調整
 st.markdown("""
     <style>
